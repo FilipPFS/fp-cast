@@ -42,8 +42,8 @@ const useGeneratePodcast = ({
 
     try {
       const response = await getPodcastAudio({
-        voice: voiceType,
-        input: voicePrompt,
+        voice: voiceType, // nova for example
+        input: voicePrompt, // body
       });
 
       const blob = new Blob([response], { type: "audio/mpeg" });

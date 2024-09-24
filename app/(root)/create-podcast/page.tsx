@@ -162,11 +162,17 @@ const CreatePodcast = () => {
               setAudioStorageId={setAudioStorageId}
               setAudio={setAudioUrl}
               setAudioDuration={setAudioDuration}
-              voicePrompt={voicePrompt}
               voiceType={voiceType!}
+              voicePrompt={voicePrompt}
               setVoicePrompt={setVoicePrompt}
             />
-            <GenerateThumbnail />
+            <GenerateThumbnail
+              image={imageUrl}
+              setImage={setImageUrl}
+              imagePrompt={imagePrompt}
+              setImagePrompt={setImagePrompt}
+              setImageStorageId={setImageStorageId}
+            />
 
             <div className="mt-10 w-full">
               <Button
