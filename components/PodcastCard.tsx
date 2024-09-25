@@ -1,19 +1,26 @@
+import { Id } from "@/convex/_generated/dataModel";
+import { PodcastCardProps } from "@/types";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-type Props = {
-  podcastId: number;
-  title: string;
-  imgURL: string;
-  description: string;
-};
+const PodcastCard = ({
+  podcastId,
+  title,
+  description,
+  imgUrl,
+}: PodcastCardProps) => {
+  const router = useRouter();
 
-const PodcastCard = ({ podcastId, title, description, imgURL }: Props) => {
+  const handleViews = () => {
+    router.push(`/podcasts/${podcastId}`);
+  };
+
   return (
-    <div className="cursor-pointer">
+    <div className="cursor-pointer" onClick={handleViews}>
       <figure className="flex flex-col gap-2">
         <Image
-          src={imgURL}
+          src={imgUrl}
           alt={title}
           width={174}
           height={174}

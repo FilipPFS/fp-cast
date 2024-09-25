@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "shiny-wolverine-180.convex.cloud",
       },
+      {
+        protocol: "https",
+        hostname: "img.clerk.com",
+      },
     ],
   },
 };

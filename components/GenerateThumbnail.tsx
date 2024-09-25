@@ -61,6 +61,7 @@ const GenerateThumbnail = ({
 
   const generateThumbnail = async () => {
     try {
+      setIsImageLoading(true);
       const response = await handleGenerateThumbnail({ prompt: imagePrompt });
       const blob = new Blob([response], { type: "image/png" });
       handleImage(blob, `thumbnail-${uuidv4()}`);

@@ -68,7 +68,6 @@ const useGeneratePodcast = ({
         title: "Error creating a podcast",
         variant: "destructive",
       });
-      setIsGenerating(false);
     }
   };
 
