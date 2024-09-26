@@ -19,7 +19,7 @@ const PodcastPlayer = () => {
 
   const togglePlayPause = () => {
     if (audioRef.current?.paused) {
-      audioRef.current?.play();
+      audioRef.current.play();
       setIsPlaying(true);
     } else {
       audioRef.current?.pause();
