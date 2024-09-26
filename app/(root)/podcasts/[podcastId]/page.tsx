@@ -92,7 +92,7 @@ const SinglePodcast = ({
           <>
             <EmptyState
               title="No similar podcasts found"
-              buttonLink="/discover,"
+              buttonLink="/discover"
               buttonText="Discover More Podcasts"
             />
           </>

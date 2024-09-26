@@ -12,7 +12,7 @@ type Props = {
 
 const EmptyState = ({ title, buttonLink, search, buttonText }: Props) => {
   return (
-    <section className="flex-center size-full flex-col gap-3">
+    <section className="flex-center size-full flex-col gap-3 pb-10">
       <Image
         src={"/icons/emptyState.svg"}
         width={250}
