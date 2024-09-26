@@ -25,7 +25,7 @@ const EmptyState = ({ title, buttonLink, search, buttonText }: Props) => {
         </h1>
         {search && (
           <p className="text-16 text-center font-medium">
-            Try adjusting your search to find what you're looking for.
+            Try adjusting your search to find what you are looking for.
           </p>
         )}
         {buttonLink && (

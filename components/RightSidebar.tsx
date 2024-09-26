@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Header from "./Header";
-import Caroussel from "./Caroussel";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import EmblaCarousel from "./Caroussel";

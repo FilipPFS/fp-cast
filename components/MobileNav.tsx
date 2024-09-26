@@ -12,9 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-type Props = {};
-
-const MobileNav = (props: Props) => {
+const MobileNav = () => {
   const pathname = usePathname();
 
   return (

@@ -11,8 +11,6 @@ import { useQuery } from "convex/react";
 import Image from "next/image";
 import React from "react";
 
-type Props = {};
-
 const SinglePodcast = ({
   params: { podcastId },
 }: {

@@ -1,4 +1,3 @@
-import { Id } from "@/convex/_generated/dataModel";
 import { PodcastCardProps } from "@/types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

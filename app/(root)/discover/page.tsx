@@ -8,8 +8,6 @@ import { api } from "@/convex/_generated/api";
 import { useQuery } from "convex/react";
 import React from "react";
 
-type Props = {};
-
 const Discover = ({
   searchParams: { search },
 }: {

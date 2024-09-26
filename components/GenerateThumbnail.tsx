@@ -14,9 +14,6 @@ import { v4 as uuidv4 } from "uuid";
 import { useAction, useMutation } from "convex/react";
 import { useUploadFiles } from "@xixixao/uploadstuff/react";
 import { api } from "@/convex/_generated/api";
-import { generateThumbnailAction } from "@/convex/openai";
-
-type Props = {};
 
 const GenerateThumbnail = ({
   image,

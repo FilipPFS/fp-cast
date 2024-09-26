@@ -9,9 +9,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
 
-type Props = {};
-
-const LeftSidebar = (props: Props) => {
+const LeftSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
 
