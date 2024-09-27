@@ -26,6 +26,7 @@ const PodcastDetailPlayer = ({
   const { setAudio } = useAudio();
   const { toast } = useToast();
   const [isDeleting, setIsDeleting] = useState(false);
+  const [canAddView, setCanAddView] = useState(true);
   const deletePodcast = useMutation(api.podcasts.deletePodcast);
 
   const handleDelete = async () => {
@@ -44,7 +45,9 @@ const PodcastDetailPlayer = ({
     }
   };
 
-  const handlePlay = () => {
+  const addView = useMutation(api.podcasts.updatePodcastViews);
+
+  const handlePlay = async () => {
     setAudio({
       title: podcastTitle,
       audioUrl,
@@ -52,6 +55,17 @@ const PodcastDetailPlayer = ({
       author,
       podcastId,
     });
+
+    if (canAddView) {
+      await addView({ podcastId });
+      setCanAddView(false);
+
+      setTimeout(() => {
+        setCanAddView(true);
+      }, 100000);
+    } else {
+      console.log("View count can only be added every 100 seconds.");
+    }
   };
 
   if (!imageUrl || !authorImageUrl) return <LoaderSpinner />;

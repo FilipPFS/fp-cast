@@ -4,9 +4,16 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import PopularPodcasts from "@/components/PopularPodcasts";
+import LoaderSpinner from "@/components/LoaderSpinner";
 
 const Home = () => {
   const trendingPodcasts = useQuery(api.podcasts.getTrendingPodcasts);
+  const popularPodcasts = useQuery(api.podcasts.getPodcastsByViews);
+
+  if (!popularPodcasts) {
+    return <LoaderSpinner />;
+  }
 
   return (
     <div className="mt-9 flex flex-col gap-9">
@@ -28,6 +35,7 @@ const Home = () => {
             }
           )}
         </div>
+        <PopularPodcasts popularPodcasts={popularPodcasts} />
       </section>
     </div>
   );

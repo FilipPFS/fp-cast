@@ -54,9 +54,17 @@ export const createPodcast = mutation({
 
 export const getTrendingPodcasts = query({
   handler: async (ctx) => {
-    const podcasts = await ctx.db.query("podcasts").collect();
+    const podcasts = await ctx.db.query("podcasts").order("desc").collect();
 
     return podcasts;
+  },
+});
+
+export const getPodcastsByViews = query({
+  handler: async (ctx) => {
+    const podcast = await ctx.db.query("podcasts").collect();
+
+    return podcast.sort((a, b) => b.views - a.views).slice(0, 4);
   },
 });
 
@@ -165,5 +173,22 @@ export const getPodcastByAuthorId = query({
     );
 
     return { podcasts, listeners: totalListeners };
+  },
+});
+
+export const updatePodcastViews = mutation({
+  args: {
+    podcastId: v.id("podcasts"),
+  },
+  handler: async (ctx, args) => {
+    const podcast = await ctx.db.get(args.podcastId);
+
+    if (!podcast) {
+      throw new ConvexError("Podcast not found");
+    }
+
+    return await ctx.db.patch(args.podcastId, {
+      views: podcast.views + 1,
+    });
   },
 });
