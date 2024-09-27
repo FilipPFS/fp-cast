@@ -8,12 +8,19 @@ import {
 } from "@/components/ui/sheet";
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
+import { SignedIn, SignedOut, useClerk, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 
 const MobileNav = () => {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const { signOut } = useClerk();
+
+  const { user } = useUser();
 
   return (
     <section>
@@ -62,6 +69,43 @@ const MobileNav = () => {
                     </SheetClose>
                   );
                 })}
+                <SheetClose asChild>
+                  <Link
+                    href={`/profile/${user?.id}`}
+                    className={cn(
+                      "flex gap-3 items-center py-4 max-lg:px-4 justify-start",
+                      {
+                        "bg-nav-focus border-r-4 border-orange-1":
+                          pathname.startsWith(`/profile/`),
+                      }
+                    )}
+                  >
+                    <Image
+                      src={"/icons/profile.svg"}
+                      alt=""
+                      width={24}
+                      height={24}
+                    />
+                    <p>Profile</p>
+                  </Link>
+                </SheetClose>
+                <SignedOut>
+                  <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8">
+                    <Button className="text-16 w-full bg-orange-1 font-extrabold">
+                      <Link href={"/sign-in"}>Sign In</Link>
+                    </Button>
+                  </div>
+                </SignedOut>
+                <SignedIn>
+                  <div className="flex-center w-full pb-14 max-lg:px-4 lg:pr-8">
+                    <Button
+                      className="text-16 w-full bg-orange-1 font-extrabold"
+                      onClick={() => signOut(() => router.push("/"))}
+                    >
+                      Log Out
+                    </Button>
+                  </div>
+                </SignedIn>
               </nav>
             </SheetClose>
           </div>
